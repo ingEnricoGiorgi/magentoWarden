@@ -7,12 +7,12 @@ use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Action\Context;
 use Customdb\Moduledb\Model\TicketFactory;
 
-//https://enrico.reflexmania.it/customdb/page/insertform
+//https://app.magentowarden.test/customdb/page/insertform
     class InsertForm extends Action
     {
 
        protected $ticketFactory;
-       
+
         protected function __construct(Context $context, TicketFactory $ticketF)
         {
 
@@ -25,7 +25,7 @@ use Customdb\Moduledb\Model\TicketFactory;
          /** @var Json $jsonResult */
         $PageResult=$this->resultFactory->create(ResultFactory::TYPE_PAGE);
 
-        
+
       if (isset($_POST["nome"]))
         {
             $nome = htmlspecialchars($_POST["nome"],ENT_QUOTES);
@@ -33,28 +33,28 @@ use Customdb\Moduledb\Model\TicketFactory;
             $number_id = htmlspecialchars($_POST["number_id"],ENT_QUOTES);
             $form = array('nome' => $nome, 'cognome' => $cognome, 'number_id' =>$number_id);
             echo json_encode($form);
-            
+
             $ticket = $this->ticketFactory->create();
             foreach($form as $key => $value) {
                 $ticket->setData($key,$value);
                 echo("dati inseriti");
                 echo "<br>";
             }
-      
+
 
             $ticket->save();
 
-        } 
-        else 
+        }
+        else
         {
             //$user = null;
             echo "no username supplied";
-        } 
-        
+        }
+
       return $PageResult;
     }
-   
 
-        
+
+
 }
-    
+
