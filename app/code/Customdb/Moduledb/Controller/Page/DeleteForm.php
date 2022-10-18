@@ -6,10 +6,11 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Action\Context;
 use Customdb\Moduledb\Model\TicketFactory;
+//https://app.magentowarden.test/customdb/page/examplelogger
 
     class DeleteForm extends Action
     {
-       
+
         protected function __construct(Context $context, TicketFactory $ticketF)
         {
 
@@ -25,7 +26,7 @@ use Customdb\Moduledb\Model\TicketFactory;
         echo (" ci arrivo");
         /*    foreach($_POST as $key => $value) {
             echo "Key=" . $key . ", Value=" . $value;
-            
+
             echo "<br>";
         }
         exit; */
@@ -36,25 +37,25 @@ use Customdb\Moduledb\Model\TicketFactory;
             $send = htmlspecialchars($_POST["send"],ENT_QUOTES);
             $form = array('number_id' =>$number_id, 'send'=>$send);
             echo json_encode($form);
-            
+
             $ticket = $this->ticketFactory->create();
             $result=$ticket->load($number_id);
             $result->delete();
             echo("dati cancellati");
             $result->save();
-            
 
-        } 
-        else 
+
+        }
+        else
         {
             //$user = null;
             echo "no username supplied";
-        } 
-        
+        }
+
       return $PageResult;
     }
-   
 
-        
+
+
 }
-    
+

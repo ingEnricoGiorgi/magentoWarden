@@ -2,7 +2,24 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Customdb\Moduledb\Api\TicketRepositoryInterface" type="Customdb\Moduledb\Model\ResourceModel\TicketRepository"/>
     <preference for="Customdb\Moduledb\Api\Data\TicketInterface" type="Customdb\Moduledb\Model\Ticket"/>
+ <!--LOGGER-->
+   <type name="Customdb\Moduledb\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">myLoggerName</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Customdb\Moduledb\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+    <!--PLUGIN CAMBIO PREZZO-->
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="change_product" type="Customdb\Moduledb\Plugin\Product" sortOrder="1" disabled="false"/>
+    </type>
 </config>
+
+
+
+
 
 
 

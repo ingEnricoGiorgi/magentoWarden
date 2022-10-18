@@ -15,16 +15,16 @@ class Delete extends Action
         $this->ticketFactory = $ticketF;
         parent::__construct($context);
     }
-//https://enrico.reflexmania.it/customdb/page/update
+
     public function execute()
     {
-            
+
             $id=2;
             $ticket = $this->ticketFactory->create();
             echo("dati cancellati");
             $result=$ticket->load($id);
             $result->delete();
             $result->save();
- 
+
     }
 }

@@ -19,7 +19,42 @@ sudo composer self-update --2
 
 
 ADMIN
-consumer key            gw0ovu3dywjwjtjapcsj69eu8ymszjtr
-consumer secret         n78wpj2q73for53jcxzg1afpg3mb6jhx
-access token            5q7zkszxtvmrqxc9sik0dbwhrvmb86cf
-access token secret     110dia506f9zx7tgvqug5f25xj66cv0i
+consumer key            sb1ozm8ouofdrqslqdbb4qfd1vxbam96
+consumer secret         tvm3rbkmkr6h4pgrnytmoyu4poh37kr3
+access token            kf0u1cbbz0wonpsvu7qqw0en0f227313
+access token secret     n2rtz0gxhtxx76yylkz076jjm4j3796b
+
+
+bin/magento setup:install \
+    --backend-frontname=backend \
+    --amqp-host=rabbitmq \
+    --amqp-port=5672 \
+    --amqp-user=guest \
+    --amqp-password=guest \
+    --db-host=db \
+    --db-name=magento \
+    --db-user=magento \
+    --db-password=magento \
+    --search-engine=elasticsearch7 \
+    --elasticsearch-host=elasticsearch \
+    --elasticsearch-port=9200 \
+    --elasticsearch-index-prefix=magento2 \
+    --elasticsearch-enable-auth=0 \
+    --elasticsearch-timeout=15 \
+    --http-cache-hosts=varnish:80 \
+    --session-save=redis \
+    --session-save-redis-host=redis \
+    --session-save-redis-port=6379 \
+    --session-save-redis-db=2 \
+    --session-save-redis-max-concurrency=20 \
+    --cache-backend=redis \
+    --cache-backend-redis-server=redis \
+    --cache-backend-redis-db=0 \
+    --cache-backend-redis-port=6379 \
+    --page-cache=redis \
+    --page-cache-redis-server=redis \
+    --page-cache-redis-db=1 \
+    --page-cache-redis-port=6379
+
+
+bin/magento queue:consumers:start async.operations.all  //starta una coda su rabbit

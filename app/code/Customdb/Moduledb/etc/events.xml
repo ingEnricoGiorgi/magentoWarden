@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-   <event name="checkout_cart_add_product_complete"> 
-      <observer name="after_add_to_cart" instance="Customdb\Moduledb\Observer\MyObserver" /> 
-   </event>
+ <!--  <event name="checkout_cart_add_product_complete">
+      <observer name="after_add_to_cart" instance="Customdb\Moduledb\Observer\MyObserver" />
+   </event>-->
+  <!-- <event name="checkout_cart_product_update_after">
+        <observer name="ChangeProductPrice" instance="Customdb\Moduledb\Plugin\ChangeProductPrice" />
+    </event> -->
 </config>
 
