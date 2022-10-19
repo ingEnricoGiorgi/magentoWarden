@@ -12,8 +12,18 @@
         </arguments>
     </type>
     <!--PLUGIN CAMBIO PREZZO-->
+
     <type name="Magento\Catalog\Model\Product">
-        <plugin name="change_product" type="Customdb\Moduledb\Plugin\Product" sortOrder="1" disabled="false"/>
+        <plugin name="change_product" type="Customdb\Moduledb\Plugin\ProductPrice" sortOrder="1" disabled="false"/>
+    </type>
+    <type name="\Magento\ConfigurableProduct\Helper\Data">
+        <plugin name="change_save_product" type="Customdb\Moduledb\Plugin\ProductPrice" sortOrder="1" disabled="false"/>
+    </type>
+   <!--  <type name="Magento\Catalog\Model\Product">
+        <plugin name="change_title" type="Customdb\Moduledb\Plugin\Product" sortOrder="2" disabled="false"/>
+    </type>-->
+        <type name="Customdb\Moduledb\Controller\Page\ExampleLogger">
+        <plugin name="change_title_examplelogger" type="Customdb\Moduledb\Plugin\ProductPrice" sortOrder="3" disabled="false"/>
     </type>
 </config>
 
