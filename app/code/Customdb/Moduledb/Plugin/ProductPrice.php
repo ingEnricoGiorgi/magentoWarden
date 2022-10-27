@@ -44,12 +44,13 @@ class ProductPrice
         if($returnValue) {
           (int) $productId = $subject->getId();
          (string) $name=$subject->getName();
-         (string) $type=$subject->gettype();
+         (string) $type=$subject->getTypeId();
          (int) $prezzo=$subject->getPrice();
-          $valuta=$subject->getPriceInfo();
+         // (int)$valuta=$subject->getPriceInfo();
+         // echo gettype($subject->getPriceInfo());
           //var_dump($valuta);
       //$this->logger->info('salvo il prodotto id: '.$productId. " name ".$name);
-           $this->logger->info('salvo il prodotto id: '.$productId. " name ".$name." tipo: ".$type." prezzo: ".$prezzo);
+           $this->logger->info('salvo il prodotto id: '.$productId. " name ".$name." tipo: ".$type." prezzo: ".$prezzo." valuta: " .$valuta);
         }
         return $returnValue;
     }
