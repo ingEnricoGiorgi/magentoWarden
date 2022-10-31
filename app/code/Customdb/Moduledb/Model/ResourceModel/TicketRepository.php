@@ -8,15 +8,16 @@ use Customdb\Moduledb\Model\ResourceModel\Ticket as TicketResourceModel;
 
 
 class TicketRepository implements TicketRepositoryInterface
-{   
+{
+   
     private $ticketFactory;
     private $ticketResourceModel;
    
 
     public function __construct(TicketFactory $ticketFactory, TicketResourceModel $ticketResourceModel)
     {
-      $this->ticketFactory = $ticketFactory;
-      $this->ticketResourceModel = $ticketResourceModel;
+        $this->ticketFactory = $ticketFactory;
+        $this->ticketResourceModel = $ticketResourceModel;
      
     }
     public function getById(int $id):TicketInterface  //TicketFactory
@@ -51,11 +52,11 @@ class TicketRepository implements TicketRepositoryInterface
 
     public function saveArray(Array $ticketArray): Bool
     {
-       print_r($ticketArray);
-       exit;
+        print_r($ticketArray);
+        exit;
         $ticket = $this->ticketFactory->create();
         foreach($ticketArray as $key => $value) {
-            $ticket->setData($key,$value);
+            $ticket->setData($key, $value);
             echo("dati inseriti");
             echo "<br>";
         }
@@ -64,24 +65,24 @@ class TicketRepository implements TicketRepositoryInterface
         
     }
         /**
-         * @param String $ticketPost
+         * @param  String $ticketPost
          * @return bool
          */
-        public function casoBase(String $token, String $nome, String $cognome, String $ticketid, String $email): Bool
-        {
+    public function casoBase(String $token, String $nome, String $cognome, String $ticketid, String $email): Bool
+    {
     
         
-            $ticket = $this->ticketFactory->create();
-                if($token=="tokenmagento"){
-                    echo"token autorizzato magento";
-                    echo "<br>";
-                $ticket->setData("nome",$nome);
-                $ticket->setData("cognome",$cognome);
-                $ticket->setData("ticketid",$ticketid);
-                $ticket->setData("email",$email);
-                echo("dati inseriti");
-                echo "<br>";
-                $ticket->save();
+        $ticket = $this->ticketFactory->create();
+        if($token=="tokenmagento") {
+            echo"token autorizzato magento";
+            echo "<br>";
+            $ticket->setData("nome", $nome);
+            $ticket->setData("cognome", $cognome);
+            $ticket->setData("ticketid", $ticketid);
+            $ticket->setData("email", $email);
+            echo("dati inseriti");
+            echo "<br>";
+            $ticket->save();
             return true;
             
         }else{

@@ -4,37 +4,39 @@ namespace Customdb\Moduledb\Block;
 
 
 class Custom extends \Magento\Framework\View\Element\Template
-{        
+{
+        
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,   
         \Magento\Customer\Model\Customer $customer, 
         \Magento\Customer\Model\Session $session,
         \Magento\Catalog\Model\Product $product,
-        
         array $data = []
-    )
-    {   
+    ) {
         $this->session=$session;
         $this->customer=$customer;  //le istruzioni van messe prima del construct
         $this->product=$product;
         parent::__construct($context, $data);
         
     }
-    public function print(){
+    public function print()
+    {
 
              
         $var="blockserv1";
         return $var;
        
     }
-    public function getCustomerName(){
+    public function getCustomerName()
+    {
         $idcliente=1;
         $objcliente=$this->customer->load($idcliente);
         return $objcliente->getFirstname();
 
     }
-    public function isCustomerLoggedin(){
-        if($this->session->isLoggedIn()){
+    public function isCustomerLoggedin()
+    {
+        if($this->session->isLoggedIn()) {
             $url="https://enrico.reflexmania.it/index.php/default/customer/account/";
         }else{
             
@@ -43,28 +45,31 @@ class Custom extends \Magento\Framework\View\Element\Template
         
         return $url;
     }
-    public function getid(){
-        if($this->session->isLoggedIn()){
-           return $this->session->getCustomerId();
+    public function getid()
+    {
+        if($this->session->isLoggedIn()) {
+            return $this->session->getCustomerId();
         }else{
             
             return null;
         }
        
     }
-    public function getCustomerInfo($id){
+    public function getCustomerInfo($id)
+    {
         $idcliente=$id;
         $objcliente=$this->customer->load($idcliente);
         
-       // $objcliente->getEmail();
+        // $objcliente->getEmail();
 
         return $objcliente->getName();
     }
-    public function getemail($id){
+    public function getemail($id)
+    {
         $idcliente=$id;
         $objcliente=$this->customer->load($idcliente);
        
-       // $objcliente->getEmail();
+        // $objcliente->getEmail();
 
         return  $this->customer->getEmail();
     }
@@ -80,4 +85,4 @@ class Custom extends \Magento\Framework\View\Element\Template
     
 }  
  
-    ?>
+?>

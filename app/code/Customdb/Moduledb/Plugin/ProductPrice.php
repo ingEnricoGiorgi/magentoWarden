@@ -10,7 +10,7 @@ class ProductPrice
     public $logger;
     public function __construct(\Customdb\Moduledb\Logger\Logger $logger) {
         $this->logger=$logger;
-     }
+    }
 
 
 

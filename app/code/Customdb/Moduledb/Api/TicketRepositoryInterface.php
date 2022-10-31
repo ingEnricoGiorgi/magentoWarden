@@ -9,13 +9,15 @@ namespace Customdb\Moduledb\Api;
 use Customdb\Moduledb\Api\Data\TicketInterface;
 /**
  * Interface TicketRepositoryInterface
+ *
  * @api
  * @since 100.1.0
  */
-interface TicketRepositoryInterface {
+interface TicketRepositoryInterface
+{
     
     /**
-     * @param int $id
+     * @param  int $id
      * @return TicketInterface
      */
     public function getById(int $id);
@@ -27,25 +29,25 @@ interface TicketRepositoryInterface {
     public function save(TicketInterface $ticket);
 
     /**
-     * @param int ticket
+     * @param  int ticket
      * @return bool
      */
     public function delete(int $ticket);
 
     /**
-     * @param int $id
+     * @param  int $id
      * @return TicketInterface
      */
     public function getIdCurl(int $id);
 
     /**
-     * @param Array $ticket
+     * @param  Array $ticket
      * @return bool
      */
     public function saveArray(Array $ticket);
     
     /**
-     * @param String $ticketPost
+     * @param  String $ticketPost
      * @return bool
      */
     public function casoBase(String $token, String $nome, String $cognome, String $ticketid, String $email);

@@ -6,15 +6,15 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 
 //https://enrico.reflexmania.it/customdb/page/ProvaLogger
-    class ProvaLogger extends Action
-    {
-        private $logger;
+class ProvaLogger extends Action
+{
+    private $logger;
 
-     public function __construct(\Psr\Log\LoggerInterface $logger, Context $context)
-     {
+    public function __construct(\Psr\Log\LoggerInterface $logger, Context $context)
+    {
          $this->logger = $logger;
          parent::__construct($context);
-     }
+    }
 
     public function execute()
     {
@@ -24,7 +24,7 @@ use Magento\Framework\App\Action\Context;
         try {
             $message="prova";
            
-         $this->logger->info($message);
+            $this->logger->info($message);
 
         } catch (\Exception $e) {
             $this->logger->critical('Error message', ['exception' => $e]);

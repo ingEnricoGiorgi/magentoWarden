@@ -23,12 +23,12 @@ class AddToCart extends Action
         $this->getProduct = $getResponse;
         $this->eventManager = $eventManager;
     }
-        public function execute()
+    public function execute()
     {
-            $this->eventManager->dispatch(
-                'checkout_cart_add_product_complete',
-                ['product' => $this->product, 'request' => $this->getRequest(), 'response' => $this->getResponse()]
-            );
+        $this->eventManager->dispatch(
+            'checkout_cart_add_product_complete',
+            ['product' => $this->product, 'request' => $this->getRequest(), 'response' => $this->getResponse()]
+        );
     }
 }
 

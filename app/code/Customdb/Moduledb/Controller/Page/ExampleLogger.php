@@ -21,11 +21,13 @@ class ExampleLogger extends Action
 
     public function execute()
     {
-          /** @var Json $jsonResult */
+          /**
+ * @var Json $jsonResult 
+*/
           $PageResult=$this->resultFactory->create(ResultFactory::TYPE_PAGE);
         echo("scrivo nel log");
         echo $this->setTitle('Welcome');
-		//echo $this->getTitle();
+        //echo $this->getTitle();
 
         $this->logcustom->info('I did something');
 
@@ -34,14 +36,14 @@ class ExampleLogger extends Action
 
 
 
-	public function setTitle($title)
-	{
-		return $this->title = $title;
-	}
+    public function setTitle($title)
+    {
+        return $this->title = $title;
+    }
 
-	public function getTitle()
-	{
-		return $this->title;
-	}
+    public function getTitle()
+    {
+        return $this->title;
+    }
 }
 

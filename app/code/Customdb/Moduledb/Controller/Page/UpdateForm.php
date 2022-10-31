@@ -7,28 +7,30 @@ use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Action\Context;
 use Customdb\Moduledb\Model\TicketFactory;
 
-    class UpdateForm extends Action
-    {
+class UpdateForm extends Action
+{
        
-        protected function __construct(Context $context, TicketFactory $ticketF)
-        {
+    protected function __construct(Context $context, TicketFactory $ticketF)
+    {
 
-            $this->ticketFactory = $ticketF;
-            parent::__construct($context);
-        }
+        $this->ticketFactory = $ticketF;
+        parent::__construct($context);
+    }
 
     public function execute()
     {
-         /** @var Json $jsonResult */
+         /**
+ * @var Json $jsonResult 
+*/
         $PageResult=$this->resultFactory->create(ResultFactory::TYPE_PAGE);
-echo"CI ARRIVO?";
+        echo"CI ARRIVO?";
         
-     if (isset($_POST["nome"]))
-  // if($_POST['send']=='update') NON FUNZIONA
+        if (isset($_POST["nome"]))
+        // if($_POST['send']=='update') NON FUNZIONA
         {
-            $nome = htmlspecialchars($_POST["nome"],ENT_QUOTES);
-            $cognome = htmlspecialchars($_POST["cognome"],ENT_QUOTES);
-            $ticketid = htmlspecialchars($_POST["ticketid"],ENT_QUOTES);
+            $nome = htmlspecialchars($_POST["nome"], ENT_QUOTES);
+            $cognome = htmlspecialchars($_POST["cognome"], ENT_QUOTES);
+            $ticketid = htmlspecialchars($_POST["ticketid"], ENT_QUOTES);
             $form = array('nome' => $nome, 'cognome' => $cognome, 'ticketid' =>$ticketid);
             echo json_encode($form);
 
@@ -49,7 +51,7 @@ echo"CI ARRIVO?";
             echo "no username supplied";
         } 
         
-      return $PageResult;
+        return $PageResult;
     }
    
 

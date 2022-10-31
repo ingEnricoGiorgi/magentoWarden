@@ -8,19 +8,21 @@ use Magento\Framework\App\Action\Context;
 use Customdb\Moduledb\Model\TicketFactory;
 //https://app.magentowarden.test/customdb/page/examplelogger
 
-    class DeleteForm extends Action
+class DeleteForm extends Action
+{
+
+    protected function __construct(Context $context, TicketFactory $ticketF)
     {
 
-        protected function __construct(Context $context, TicketFactory $ticketF)
-        {
-
-            $this->ticketFactory = $ticketF;
-            parent::__construct($context);
-        }
+        $this->ticketFactory = $ticketF;
+        parent::__construct($context);
+    }
 
     public function execute()
     {
-         /** @var Json $jsonResult */
+         /**
+ * @var Json $jsonResult 
+*/
         $PageResult=$this->resultFactory->create(ResultFactory::TYPE_PAGE);
 
         echo (" ci arrivo");
@@ -30,11 +32,10 @@ use Customdb\Moduledb\Model\TicketFactory;
             echo "<br>";
         }
         exit; */
-        if (isset($_POST["ticketid"]))
-        {
+        if (isset($_POST["ticketid"])) {
 
-            $number_id = htmlspecialchars($_POST["number_id"],ENT_QUOTES);
-            $send = htmlspecialchars($_POST["send"],ENT_QUOTES);
+            $number_id = htmlspecialchars($_POST["number_id"], ENT_QUOTES);
+            $send = htmlspecialchars($_POST["send"], ENT_QUOTES);
             $form = array('number_id' =>$number_id, 'send'=>$send);
             echo json_encode($form);
 
@@ -52,7 +53,7 @@ use Customdb\Moduledb\Model\TicketFactory;
             echo "no username supplied";
         }
 
-      return $PageResult;
+        return $PageResult;
     }
 
 

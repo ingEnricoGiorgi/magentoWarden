@@ -20,7 +20,7 @@ class Insert extends Action
     {
         $content="prova";
         $ticket = $this->ticketFactory->create();
-        $ticket->setData("nome",$content);
+        $ticket->setData("nome", $content);
         echo("dati inseriti");
         $ticket->save();
     }

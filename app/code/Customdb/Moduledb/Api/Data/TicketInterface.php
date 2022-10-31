@@ -8,6 +8,7 @@ namespace Customdb\Moduledb\Api\Data;
 
 /**
  * Interface TicketInterface
+ *
  * @api
  * @since 100.1.0
  */
@@ -26,9 +27,9 @@ interface TicketInterface
     public function getTicketId();
 
      /**
-     * @param int $ticketId
-     * @return int
-     */
+      * @param  int $ticketId
+      * @return int
+      */
     public function setTicketId($data); 
 
 
@@ -38,11 +39,11 @@ interface TicketInterface
     public function getNome();
 
      /**
-     * @param string $ticketNome
-     * @return string
-     */
+      * @param  string $ticketNome
+      * @return string
+      */
        
-     public function setNome($data); 
+    public function setNome($data); 
 
 
     /**
@@ -51,21 +52,21 @@ interface TicketInterface
     public function getCognome();
 
      /**
-     * @return string $ticketCognome
-     * @return string
-     */
+      * @return string $ticketCognome
+      * @return string
+      */
     public function setCognome($data); 
 
 
         /**
-     * @return int
-     */
+         * @return int
+         */
     public function getNumberId();
 
      /**
-     * @param int $ticketNumber
-     * @return int
-     */
+      * @param  int $ticketNumber
+      * @return int
+      */
     public function setNumberId($data); 
     
     /**
@@ -74,9 +75,9 @@ interface TicketInterface
     public function getEmail();
 
      /**
-     * @param string $ticketEmail
-     * @return int
-     */
+      * @param  string $ticketEmail
+      * @return int
+      */
     public function setEmail($data); 
     
 }

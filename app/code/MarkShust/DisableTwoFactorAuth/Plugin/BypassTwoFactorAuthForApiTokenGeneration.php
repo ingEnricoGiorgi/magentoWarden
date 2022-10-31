@@ -14,11 +14,14 @@ use Magento\TwoFactorAuth\Model\AdminAccessTokenService;
 
 /**
  * Class BypassWebApiTwoFactorAuth
+ *
  * @package MarkShust\DisableTwoFactorAuth\Plugin
  */
 class BypassTwoFactorAuthForApiTokenGeneration
 {
-    /** @var AdminTokenServiceInterface */
+    /** @var AdminTokenServiceInterface
+     * interfaccia
+     */
     private $adminTokenService;
 
     /** @var ScopeConfigInterface */
