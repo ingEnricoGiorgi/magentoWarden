@@ -50,8 +50,9 @@ class ProductPrice
          // echo gettype($subject->getPriceInfo());
           //var_dump($valuta);
       //$this->logger->info('salvo il prodotto id: '.$productId. " name ".$name);
-           $this->logger->info('salvo il prodotto id: '.$productId. " name ".$name." tipo: ".$type." prezzo: ".$prezzo." valuta: " .$valuta);
-        }
+ //          $this->logger->info('salvo il prodotto id: '.$productId. " name ".$name." tipo: ".$type." prezzo: ".$prezzo);
+ $this->logger->info('salvo il prodotto id: '.$productId. " name ".$name);
+}
         return $returnValue;
     }
 
