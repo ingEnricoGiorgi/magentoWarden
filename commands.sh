@@ -58,3 +58,6 @@ bin/magento setup:install \
 
 
 bin/magento queue:consumers:start async.operations.all  //starta una coda su rabbit
+
+lista moduli di terze parti con vulnerabilità
+n98-magerun2.phar dev:module:security
