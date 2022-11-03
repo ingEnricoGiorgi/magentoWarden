@@ -27,6 +27,7 @@ class AddToCart extends Action
     {
 
         //provaadueeeeee
+        echo "prova";
         $this->eventManager->dispatch(
             'checkout_cart_add_product_complete',
             ['product' => $this->product, 'request' => $this->getRequest(), 'response' => $this->getResponse()]
