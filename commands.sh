@@ -2,6 +2,9 @@
 
 rm -rf var/generation
 rm -rf var/cache
+rm -r pub/static/*/*
+rm -r var/view_preprocessed/*
+
 
 bin/magento maintenance:enable
 bin/magento maintenance:disable
