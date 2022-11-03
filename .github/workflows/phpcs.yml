@@ -1,4 +1,4 @@
-name: "CI"
+name: "CodeSnifferActions"
 
 on:
   pull_request:
