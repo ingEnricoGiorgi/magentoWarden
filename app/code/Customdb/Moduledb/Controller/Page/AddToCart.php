@@ -15,7 +15,7 @@ class AddToCart extends Action
     protected $getRequest;
     protected $getResponse;
     protected $eventManager;
-    
+
     public function __construct(EventManager $eventManager,Product $product, RequestInterface $getRequest, ResponseInterface $getResponse)
     {
         $this->product = $product;
@@ -25,6 +25,8 @@ class AddToCart extends Action
     }
     public function execute()
     {
+
+        //provaa
         $this->eventManager->dispatch(
             'checkout_cart_add_product_complete',
             ['product' => $this->product, 'request' => $this->getRequest(), 'response' => $this->getResponse()]
