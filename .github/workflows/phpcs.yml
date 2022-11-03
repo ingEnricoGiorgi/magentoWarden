@@ -1,11 +1,8 @@
 name: "CodeSnifferActions"
 
 on:
-  pull_request:
-    paths:
-      - "**.php"
-      - "phpcs.xml"
-      - ".github/workflows/phpcs.yml"
+  push
+
 
 jobs:
   phpcs:
