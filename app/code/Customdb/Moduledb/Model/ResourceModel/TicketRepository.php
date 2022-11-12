@@ -9,71 +9,85 @@ use Customdb\Moduledb\Model\ResourceModel\Ticket as TicketResourceModel;
 
 class TicketRepository implements TicketRepositoryInterface
 {
-   
+
     private $ticketFactory;
+
     private $ticketResourceModel;
-   
+
 
     public function __construct(TicketFactory $ticketFactory, TicketResourceModel $ticketResourceModel)
     {
-        $this->ticketFactory = $ticketFactory;
+        $this->ticketFactory       = $ticketFactory;
         $this->ticketResourceModel = $ticketResourceModel;
-     
-    }
-    public function getById(int $id):TicketInterface  //TicketFactory
+
+    }//end __construct()
+
+
+    public function getById(int $id):TicketInterface
+    // TicketFactory
     {
         $ticket = $this->ticketFactory->create();
-        $result=$ticket->load($id);
-        return $result; 
-    }
+        $result = $ticket->load($id);
+        return $result;
+
+    }//end getById()
+
 
     public function save(TicketInterface $ticket): Bool
     {
-       
+
              $ticket->save();
              return true;
-        
-    }
+
+    }//end save()
+
+
     public function delete(int $ticket): Bool
     {
-       
+
         $idticket = $this->getById($ticket);
         $this->ticketResourceModel->delete($idticket);
         return true;
-        
-        
-    }
-    public function getIdCurl(int $id):TicketInterface  //TicketFa
+
+    }//end delete()
+
+
+    public function getIdCurl(int $id):TicketInterface
+    // TicketFa
     {
         $ticket = $this->ticketFactory->create();
-        $result=$ticket->load($id);
-        return $result; 
-    }
+        $result = $ticket->load($id);
+        return $result;
+
+    }//end getIdCurl()
+
 
     public function saveArray(Array $ticketArray): Bool
     {
         print_r($ticketArray);
         exit;
         $ticket = $this->ticketFactory->create();
-        foreach($ticketArray as $key => $value) {
+        foreach ($ticketArray as $key => $value) {
             $ticket->setData($key, $value);
             echo("dati inseriti");
             echo "<br>";
         }
+
         $ticket->save();
              return true;
-        
-    }
+
+    }//end saveArray()
+
+
         /**
          * @param  String $ticketPost
          * @return bool
          */
     public function casoBase(String $token, String $nome, String $cognome, String $ticketid, String $email): Bool
     {
-    
-        
+
         $ticket = $this->ticketFactory->create();
-        if($token=="tokenmagento") {
+        if ($token == "tokenmagento") {
             echo"token autorizzato magento";
             echo "<br>";
             $ticket->setData("nome", $nome);
@@ -84,17 +98,21 @@ class TicketRepository implements TicketRepositoryInterface
             echo "<br>";
             $ticket->save();
             return true;
-            
-        }else{
-        
+        } else {
             return false;
         }
-        
-    }
-    public function postIdCurl(int $id):TicketInterface  //TicketFa
+
+    }//end casoBase()
+
+
+    public function postIdCurl(int $id):TicketInterface
+    // TicketFa
     {
         $ticket = $this->ticketFactory->create();
-        $result=$ticket->load($id);
-        return $result; 
-    }
-}
+        $result = $ticket->load($id);
+        return $result;
+
+    }//end postIdCurl()
+
+
+}//end class

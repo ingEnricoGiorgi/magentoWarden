@@ -15,12 +15,14 @@ use Customdb\Moduledb\Api\Data\TicketInterface;
  */
 interface TicketRepositoryInterface
 {
-    
+
+
     /**
      * @param  int $id
      * @return TicketInterface
      */
     public function getById(int $id);
+
 
     /**
      * @param TicketInterface $ticket
@@ -28,11 +30,13 @@ interface TicketRepositoryInterface
      */
     public function save(TicketInterface $ticket);
 
+
     /**
      * @param  int ticket
      * @return bool
      */
     public function delete(int $ticket);
+
 
     /**
      * @param  int $id
@@ -40,15 +44,19 @@ interface TicketRepositoryInterface
      */
     public function getIdCurl(int $id);
 
+
     /**
      * @param  Array $ticket
      * @return bool
      */
     public function saveArray(Array $ticket);
-    
+
+
     /**
      * @param  String $ticketPost
      * @return bool
      */
     public function casoBase(String $token, String $nome, String $cognome, String $ticketid, String $email);
-}
+
+
+}//end interface

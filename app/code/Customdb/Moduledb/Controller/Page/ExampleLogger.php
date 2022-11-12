@@ -5,45 +5,51 @@ use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Customdb\Moduledb\Plugin\Product;
-//https://app.magentowarden.test/customdb/page/examplelogger
-
-
+// https://app.magentowarden.test/customdb/page/examplelogger
 class ExampleLogger extends Action
 {
+
     public $logcustom;
+
     public $title;
+
 
     public function __construct(Context $context, \Customdb\Moduledb\Logger\Logger $logger)
     {
-        $this->logcustom=$logger;
+        $this->logcustom = $logger;
         parent::__construct($context);
-    }
+
+    }//end __construct()
+
 
     public function execute()
     {
-          /**
- * @var Json $jsonResult 
-*/
-          $PageResult=$this->resultFactory->create(ResultFactory::TYPE_PAGE);
+          /*
+           * @var Json $jsonResult
+           */
+          $PageResult = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         echo("scrivo nel log");
         echo $this->setTitle('Welcome');
-        //echo $this->getTitle();
-
+        // echo $this->getTitle();
         $this->logcustom->info('I did something');
 
         return $PageResult;
-    }
 
+    }//end execute()
 
 
     public function setTitle($title)
     {
         return $this->title = $title;
-    }
+
+    }//end setTitle()
+
 
     public function getTitle()
     {
         return $this->title;
-    }
-}
 
+    }//end getTitle()
+
+
+}//end class

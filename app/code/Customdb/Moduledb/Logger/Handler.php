@@ -5,10 +5,11 @@ use Monolog\Logger;
 
 class Handler extends \Magento\Framework\Logger\Handler\Base
 {
+
     /**
      * Logging level
      *
-     * @var int
+     * @var integer
      */
     protected $loggerType = Logger::INFO;
 
@@ -18,4 +19,4 @@ class Handler extends \Magento\Framework\Logger\Handler\Base
      * @var string
      */
     protected $fileName = '/var/log/mylogs.log';
-}
+}//end class

@@ -29,6 +29,8 @@ use Magento\Framework\Event\ObserverInterface;
  */
 class MyObserver implements ObserverInterface
 {
+
+
     /**
      * Constructor
      */
@@ -36,7 +38,9 @@ class MyObserver implements ObserverInterface
     {
         // Observer initialization code...
         // You can use dependency injection to get any class this observer may need.
-    }
+    }//end __construct()
+
+
     /**
      * Execute
      *
@@ -48,9 +52,12 @@ class MyObserver implements ObserverInterface
     {
 
         $displayText = $observer->getData('myEventData');
-        echo $displayText->getText() . " - Event </br>";
+        echo $displayText->getText()." - Event </br>";
         $displayText->setText('Execute event successfully.');
 
         return $this;
-    }
-}
+
+    }//end execute()
+
+
+}//end class

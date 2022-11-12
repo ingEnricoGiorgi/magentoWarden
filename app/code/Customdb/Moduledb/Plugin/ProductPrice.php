@@ -1,72 +1,79 @@
 <?php
 namespace Customdb\Moduledb\Plugin;
 use Magento\Catalog\Model\Product;
-//use Magento\Catalog\Model\Product;
-//https://app.magentowarden.test/customdb/page/examplelogger
-
+// use Magento\Catalog\Model\Product;
+// https://app.magentowarden.test/customdb/page/examplelogger
 class ProductPrice
 {
 
     public $logger;
-    public function __construct(\Customdb\Moduledb\Logger\Logger $logger) {
-        $this->logger=$logger;
-    }
 
 
+    public function __construct(\Customdb\Moduledb\Logger\Logger $logger)
+    {
+        $this->logger = $logger;
 
-  /* FUNZIONA CON IL CONTROLLER EXAMPLE LOGGER controlla il  di.xml
-  */ public function beforeSetTitle(\Customdb\Moduledb\Controller\Page\ExampleLogger $subject, $title)
-	{
+    }//end __construct()
+
+
+    /*
+        FUNZIONA CON IL CONTROLLER EXAMPLE LOGGER controlla il  di.xml
+    */ public function beforeSetTitle(\Customdb\Moduledb\Controller\Page\ExampleLogger $subject, $title)
+{
         echo "Pokemon";
         $title = "prova";
 
-		return $title;
-	}
+        return $title;
 
-   /* public function beforeSetTitle(\Magento\Catalog\Model\Product $subject, $title)
-	{
+}//end beforeSetTitle()
+
+
+   /*
+       public function beforeSetTitle(\Magento\Catalog\Model\Product $subject, $title)
+       {
         echo "Pokemondue";
         $title = "provadue";
 
-		return $title;
-	}*/
+        return $title;
+  }*/
 
-    public function afterGetPrice(\Magento\Catalog\Model\Product $subject, $result)
-    {
+public function afterGetPrice(\Magento\Catalog\Model\Product $subject, $result)
+{
 
-        $meta=$result/2;
-        return $result+$meta;
+    $meta = ($result / 2);
+      return ($result + $meta);
+
+}//end afterGetPrice()
+
+
+public function aroundSave(\Magento\Catalog\Model\Product $subject, \Closure $proceed)
+{
+    $returnValue = $proceed();
+    if ($returnValue) {
+        (int) $productId = $subject->getId();
+        (string) $name   = $subject->getName();
+        (string) $type   = $subject->getTypeId();
+        (int) $prezzo    = $subject->getPrice();
+        // (int)$valuta=$subject->getPriceInfo();
+        // echo gettype($subject->getPriceInfo());
+        // var_dump($valuta);
+        // $this->logger->info('salvo il prodotto id: '.$productId. " name ".$name);
+        // $this->logger->info('salvo il prodotto id: '.$productId. " name ".$name." tipo: ".$type." prezzo: ".$prezzo);
+        $this->logger->info('salvo il prodotto id: '.$productId." name ".$name);
     }
 
-    public function aroundSave(\Magento\Catalog\Model\Product $subject, \Closure $proceed)
-    {
-        $returnValue= $proceed();
-        if($returnValue) {
-          (int) $productId = $subject->getId();
-         (string) $name=$subject->getName();
-         (string) $type=$subject->getTypeId();
-         (int) $prezzo=$subject->getPrice();
-         // (int)$valuta=$subject->getPriceInfo();
-         // echo gettype($subject->getPriceInfo());
-          //var_dump($valuta);
-      //$this->logger->info('salvo il prodotto id: '.$productId. " name ".$name);
- //          $this->logger->info('salvo il prodotto id: '.$productId. " name ".$name." tipo: ".$type." prezzo: ".$prezzo);
- $this->logger->info('salvo il prodotto id: '.$productId. " name ".$name);
-}
-        return $returnValue;
-    }
+    return $returnValue;
+
+}//end aroundSave()
 
 
-
-
-
-
-  /*  public function aroundGetOptions(
+  /*
+      public function aroundGetOptions(
         \Magento\ConfigurableProduct\Helper\Data $subject,
         callable $proceed,
         $currentProduct,
         $allowedProducts
-    ) {
+      ) {
         $options = [];
         $allowAttributes = $subject->getAllowAttributes($currentProduct);
 
@@ -84,4 +91,4 @@ class ProductPrice
         echo "aiuto";
         return $options;
     }*/
-}
+}//end class

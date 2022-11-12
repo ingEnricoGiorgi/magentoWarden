@@ -5,6 +5,7 @@ namespace Customdb\Moduledb\Setup;
 class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
 {
 
+
     public function install(\Magento\Framework\Setup\SchemaSetupInterface $setup, \Magento\Framework\Setup\ModuleContextInterface $context)
     {
         $installer = $setup;
@@ -18,10 +19,10 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
                     \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
                     null,
                     [
-                    'identity' => true,
-                    'nullable' => false,
-                    'primary'  => true,
-                    'unsigned' => true,
+                        'identity' => true,
+                        'nullable' => false,
+                        'primary'  => true,
+                        'unsigned' => true,
                     ],
                     'Post ID'
                 )
@@ -67,17 +68,18 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
                     [],
                     'content'
                 )
-            /*    ->addColumn(
-            'created_at',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
-            null,
-            ['nullable' => false, 'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT],
-            'Created At'
-            )->addColumn(
-            'updated_at',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
-            null,
-            ['nullable' => false, 'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT_UPDATE],
+            /*
+                ->addColumn(
+                'created_at',
+                \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
+                null,
+                ['nullable' => false, 'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT],
+                'Created At'
+                )->addColumn(
+                'updated_at',
+                \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
+                null,
+                ['nullable' => false, 'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT_UPDATE],
             'Updated At') */
                 ->setComment('Post Table');
             $installer->getConnection()->createTable($table);
@@ -86,13 +88,29 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
                 $installer->getTable('customdb_moduledb_enricog'),
                 $setup->getIdxName(
                     $installer->getTable('customdb_moduledb_enricog'),
-                    ['name', 'url_key', 'post_content', 'tags', 'featured_image'],
+                    [
+                        'name',
+                        'url_key',
+                        'post_content',
+                        'tags',
+                        'featured_image',
+                    ],
                     \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
                 ),
-                ['name', 'url_key', 'post_content', 'tags', 'featured_image'],
+                [
+                    'name',
+                    'url_key',
+                    'post_content',
+                    'tags',
+                    'featured_image',
+                ],
                 \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
             );
-        }
+        }//end if
+
         $installer->endSetup();
-    }
-}
+
+    }//end install()
+
+
+}//end class

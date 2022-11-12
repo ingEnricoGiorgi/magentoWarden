@@ -11,27 +11,41 @@ use Magento\Framework\Event\ManagerInterface as EventManager;
 
 class AddToCart extends Action
 {
+
     protected $product;
+
     protected $getRequest;
+
     protected $getResponse;
+
     protected $eventManager;
 
-    public function __construct(EventManager $eventManager,Product $product, RequestInterface $getRequest, ResponseInterface $getResponse)
+
+    public function __construct(EventManager $eventManager, Product $product, RequestInterface $getRequest, ResponseInterface $getResponse)
     {
-        $this->product = $product;
-        $this->getRequest = $getRequest;
-        $this->getProduct = $getResponse;
+        $this->product      = $product;
+        $this->getRequest   = $getRequest;
+        $this->getProduct   = $getResponse;
         $this->eventManager = $eventManager;
-    }
+
+    }//end __construct()
+
+
     public function execute()
     {
 
-        //provaadueeeeee
+        // provaadueeeeee
         echo "prova2";
         $this->eventManager->dispatch(
             'checkout_cart_add_product_complete',
-            ['product' => $this->product, 'request' => $this->getRequest(), 'response' => $this->getResponse()]
+            [
+                'product'  => $this->product,
+                'request'  => $this->getRequest(),
+                'response' => $this->getResponse(),
+            ]
         );
-    }
-}
 
+    }//end execute()
+
+
+}//end class

@@ -67,4 +67,5 @@ n98-magerun2.phar dev:module:security
 
 code sniffer commands per vedere gli errori e fixarli -n nega i warning
 1    php phpcs.phar -n /var/www/html/app/code/Customdb
+#corregge in automatico il codice
 2    php phpcbf.phar /var/www/html/app/code/Customdb

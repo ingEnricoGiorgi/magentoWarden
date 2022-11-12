@@ -8,20 +8,27 @@ use Customdb\Moduledb\Model\TicketFactory;
 
 class Insert extends Action
 {
+
     protected $ticketFactory;
 
-    public function __construct(Context $context,TicketFactory $ticketF)
+
+    public function __construct(Context $context, TicketFactory $ticketF)
     {
         $this->ticketFactory = $ticketF;
         parent::__construct($context);
-    }
+
+    }//end __construct()
+
 
     public function execute()
     {
-        $content="prova";
-        $ticket = $this->ticketFactory->create();
+        $content = "prova";
+        $ticket  = $this->ticketFactory->create();
         $ticket->setData("nome", $content);
         echo("dati inseriti");
         $ticket->save();
-    }
-}
+
+    }//end execute()
+
+
+}//end class
