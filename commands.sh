@@ -1,10 +1,18 @@
 #!/bin/bash
+enrico
+enrico92@
 
 rm -rf var/generation
 rm -rf var/cache
 rm -r pub/static/*/*
 rm -r var/view_preprocessed/*
+bin/magento module:enable --all
 
+bin/magento setup:upgrade
+bin/magento setup:static-content:deploy -f
+bin/magento setup:di:compile
+bin/magento cache:clean
+bin/magento cache:flush
 
 bin/magento maintenance:enable
 bin/magento maintenance:disable
