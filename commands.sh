@@ -14,6 +14,9 @@ bin/magento setup:di:compile
 bin/magento cache:clean
 bin/magento cache:flush
 
+bin/magento cache:status
+cache:disable
+
 bin/magento maintenance:enable
 bin/magento maintenance:disable
 bin/magento config:show
