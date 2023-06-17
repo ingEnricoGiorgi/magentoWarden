@@ -53,6 +53,4 @@ class InsertForm extends Action
         return $PageResult;
     }
 
-
-
 }//end class

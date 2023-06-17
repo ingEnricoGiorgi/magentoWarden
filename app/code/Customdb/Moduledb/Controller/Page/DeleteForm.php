@@ -9,8 +9,6 @@ use Customdb\Moduledb\Model\TicketFactory;
 
 class DeleteForm extends Action
 {
-
-
     protected function __construct(Context $context, TicketFactory $ticketF)
     {
 
@@ -26,8 +24,6 @@ class DeleteForm extends Action
           * @var Json $jsonResult
           */
         $PageResult = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-
-        echo (" ci arrivo");
 
         if (isset($_POST["numberid"])) {
             $numberid = htmlspecialchars($_POST["numberid"], ENT_QUOTES);

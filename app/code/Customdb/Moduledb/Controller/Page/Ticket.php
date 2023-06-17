@@ -5,7 +5,6 @@ namespace Customdb\Moduledb\Controller\Page;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Action\Context;
-// use Customdb\Moduledb\Model\TicketFactory;
 use Customdb\Moduledb\Model\ResourceModel\Ticket\CollectionFactory;
 
 class Ticket extends Action
@@ -33,7 +32,6 @@ class Ticket extends Action
     {
         $page = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $result = $this->collectionFactory->create();
-
         $block = $page->getLayout()->getBlock('cmdb_page_ticket');
         $block->setData('tickets', $result);
         return $page;

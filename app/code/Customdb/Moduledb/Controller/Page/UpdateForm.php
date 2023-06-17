@@ -44,8 +44,6 @@ class UpdateForm extends Action
             $ticketid = htmlspecialchars($_POST["ticketid"], ENT_QUOTES);
             $email = htmlspecialchars($_POST["email"], ENT_QUOTES);
 
-
-
             $form     = [
                 'numberid'     => $numberid,
                 'nome'     => $nome,
