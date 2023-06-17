@@ -62,19 +62,6 @@ interface TicketInterface
     public function setCognome($data);
 
 
-        /**
-         * @return int
-         */
-    public function getNumberId();
-
-
-     /**
-      * @param  int $ticketNumber
-      * @return int
-      */
-    public function setNumberId($data);
-
-
     /**
      * @return string
      */

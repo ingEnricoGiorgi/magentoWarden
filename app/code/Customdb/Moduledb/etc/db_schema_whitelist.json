@@ -1,8 +1,12 @@
 {
-    "prova": {
+    "ticket_its": {
         "column": {
             "number_id": true,
-            "nome": true
+            "nome": true,
+            "cognome": true,
+            "ticketid": true,
+            "email": true
+            
         },
         "constraint": {
             "PRIMARY": true

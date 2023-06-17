@@ -5,18 +5,17 @@
  * See COPYING.txt for license details.
  */
 -->
-<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd"> 
-    <table name="prova2"  comment="Catalog Product Table">
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="ticket_its"  comment="Catalog Product Table">
         <column xsi:type="int" name="number_id" unsigned="true" nullable="false" identity="true" comment="number" />
-       
         <column xsi:type="varchar" name="nome" comment="nome"  default="default"/>
         <column xsi:type="varchar" name="cognome" comment="cognome"  default="default"/>
         <column xsi:type="int" name="ticketid" comment="ticket ID" unsigned="true" nullable="false" identity="false"  default="0" />
-        <column xsi:type="varchar" name="email" comment="email" default="enrico.giorgi92@gmail.com" />
+        <column xsi:type="varchar" name="email" comment="email" default="default" />
   <constraint xsi:type="primary" referenceId="PRIMARY">
         <column name="number_id"/>
   </constraint>
-     
+
 </table>
 
 
@@ -1856,5 +1855,5 @@
             <column name="type_id"/>
         </constraint>
     </table>
-    --> 
+    -->
 </schema>

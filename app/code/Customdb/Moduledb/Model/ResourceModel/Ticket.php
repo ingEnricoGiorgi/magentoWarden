@@ -10,7 +10,7 @@ class Ticket extends AbstractDb
     protected function _construct()
     {
         // creo tabella e campo
-        $this->_init('prova2', 'number_id');
+        $this->_init('ticket_its', 'number_id');
 
     }//end _construct()
 

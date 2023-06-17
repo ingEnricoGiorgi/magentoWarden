@@ -6,17 +6,23 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Action\Context;
 use Customdb\Moduledb\Model\TicketFactory;
-
+use Customdb\Moduledb\Api\TicketRepositoryInterface;
+use Customdb\Moduledb\Api\Data\TicketInterface;
 // https://app.magentowarden.test/customdb/page/insertform
 class InsertForm extends Action
 {
 
     protected $ticketFactory;
+    protected $ticketRepository;
 
-
-    protected function __construct(Context $context, TicketFactory $ticketF)
+    protected function __construct(
+        Context $context,
+        TicketRepositoryInterface $ticketRepository,
+        TicketFactory $ticketF
+    )
     {
 
+        $this->ticketRepository = $ticketRepository;
         $this->ticketFactory = $ticketF;
         parent::__construct($context);
 
@@ -25,39 +31,31 @@ class InsertForm extends Action
 
     public function execute()
     {
-
-         /*
-          * @var Json $jsonResult
-          */
         $PageResult = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-
+        $ritiro = [];
         if (isset($_POST["nome"])) {
-            $nome      = htmlspecialchars($_POST["nome"], ENT_QUOTES);
-            $cognome   = htmlspecialchars($_POST["cognome"], ENT_QUOTES);
-            $number_id = htmlspecialchars($_POST["number_id"], ENT_QUOTES);
-            $form      = [
-                'nome'      => $nome,
-                'cognome'   => $cognome,
-                'number_id' => $number_id,
-            ];
-            echo json_encode($form);
+            $ritiro["nome"]=htmlspecialchars($_POST["nome"], ENT_QUOTES);
+            $ritiro["cognome"]=htmlspecialchars($_POST["cognome"], ENT_QUOTES);
+            $ritiro["ticketid"]=htmlspecialchars($_POST["ticketid"], ENT_QUOTES);
+            $ritiro["email"]=htmlspecialchars($_POST["email"], ENT_QUOTES);
 
             $ticket = $this->ticketFactory->create();
-            foreach ($form as $key => $value) {
+            foreach ($ritiro as $key => $value) {
                 $ticket->setData($key, $value);
-                echo("dati inseriti");
-                echo "<br>";
+
             }
 
             $ticket->save();
+
+
+            echo "dati inseriti";
         } else {
-            // $user = null;
             echo "no username supplied";
-        }//end if
+        }
 
         return $PageResult;
+    }
 
-    }//end execute()
 
 
 }//end class

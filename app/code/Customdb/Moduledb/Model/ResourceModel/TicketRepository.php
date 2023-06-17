@@ -65,7 +65,7 @@ class TicketRepository implements TicketRepositoryInterface
     public function saveArray(Array $ticketArray): Bool
     {
         print_r($ticketArray);
-        exit;
+        //exit;
         $ticket = $this->ticketFactory->create();
         foreach ($ticketArray as $key => $value) {
             $ticket->setData($key, $value);
