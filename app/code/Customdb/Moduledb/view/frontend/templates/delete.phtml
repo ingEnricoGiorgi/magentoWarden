@@ -2,12 +2,12 @@
 <form action="<?php echo $block->getUrl('customdb/page/deleteform');?>" method="post" enctype="multipart/form-data">
   <?php echo $this->getBlockHtml('deleteformkey')?> <!-- chiave nascosta per cross origin request -->
   <label for="ticket">ID:</label><br>
-  <input type="number" id="ticketid" name="ticketid" ><br>
+  <input type="number" id="numberid" name="numberid" ><br>
   <button type="submit" name="send" value="delete"> delete </button>
   <button>
-  <a href="https://enrico.reflexmania.it/customdb/page/ticket/">HOME</a>
+  <a href="<?php echo $block->getUrl('customdb/page/ticket/');?>">HOME</a>
   </button>
 
-</form> 
+</form>
 
 

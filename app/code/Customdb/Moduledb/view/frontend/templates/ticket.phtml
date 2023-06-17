@@ -1,24 +1,20 @@
 <h2>TICKETS SECTION</h2>
-<?php 
+<?php
 $result = $block->getData('tickets');
 
-/*foreach($result as $ticket) {   
-  echo $ticket->getData('number_id');
-  echo $ticket->getNome();
 
-   }    */         
 ?>
 <table >
-<?php foreach($result as $ticket) { ?>  
+<?php foreach($result as $ticket) { ?>
   <tr>
     <th ><?php echo $ticket->getData('number_id'); ?> </th>
     <th><?php  echo $ticket->getNome();  ?></th>
     <th><?php  echo $ticket->getCognome();   ?></th>
     <th><?php  echo $ticket->getTicketid();   ?></th>
-    
-    <th><a href="https://enrico.reflexmania.it/customdb/page/insertform/">INSERT</a></th>
-    <th><a href="https://enrico.reflexmania.it/customdb/page/updateform/">UPDATE</a></th>
-    <th><a href="https://enrico.reflexmania.it/customdb/page/deleteform/">DELETE</a></th>
+
+    <th><a href="<?php echo $block->getUrl('customdb/page/insertform');?>">INSERT</a></th>
+    <th><a href="<?php echo $block->getUrl('customdb/page/updateform/');?>">UPDATE</a></th>
+    <th><a href="<?php echo $block->getUrl('customdb/page/deleteform/');?>">DELETE</a></th>
   </tr>
- <?php } ?> 
+ <?php } ?>
 </table>

@@ -44,10 +44,7 @@ class InsertForm extends Action
                 $ticket->setData($key, $value);
 
             }
-
             $ticket->save();
-
-
             echo "dati inseriti";
         } else {
             echo "no username supplied";
