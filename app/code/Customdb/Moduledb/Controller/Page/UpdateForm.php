@@ -26,12 +26,12 @@ class UpdateForm extends Action
           * @var Json $jsonResult
           */
         $PageResult = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        echo"CI ARRIVO?";
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $request = $objectManager->get('\Magento\Framework\App\Request\Http');
-        $numberId = $request->getParam('number_id');
+        $numberId = (int)$request->getParam('number_id');
+
         $block = $PageResult->getLayout()->getBlock('cmdb_page_updateform');
-        $block->setData('tickets', $numberId);
+        $block->setData('numberid', $numberId);
 
         if (isset($_POST["nome"])) {
 
