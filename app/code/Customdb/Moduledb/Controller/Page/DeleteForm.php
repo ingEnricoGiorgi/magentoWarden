@@ -6,7 +6,7 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Action\Context;
 use Customdb\Moduledb\Model\TicketFactory;
-// https://app.magentowarden.test/customdb/page/examplelogger
+
 class DeleteForm extends Action
 {
 

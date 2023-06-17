@@ -14,8 +14,11 @@ bin/magento setup:di:compile
 bin/magento cache:clean
 bin/magento cache:flush
 
+bin/magento deploy:mode:set developer
 bin/magento cache:status
-cache:disable
+bin/magento cache:disable layout
+bin/magento cache:disable block_html
+bin/magento cache:disable full_page
 
 bin/magento maintenance:enable
 bin/magento maintenance:disable

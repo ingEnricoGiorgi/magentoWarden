@@ -32,11 +32,7 @@ class Ticket extends Action
     public function execute()
     {
         $page = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-
         $result = $this->collectionFactory->create();
-
-        // lt sta per lesser than
-       // $result->addFieldToFilter('number_id', ['lt' => 166]);
 
         $block = $page->getLayout()->getBlock('cmdb_page_ticket');
         $block->setData('tickets', $result);

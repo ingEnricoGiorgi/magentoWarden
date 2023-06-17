@@ -6,14 +6,19 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Action\Context;
 use Customdb\Moduledb\Model\TicketFactory;
+use Magento\Framework\App\Request\Http;
 
 class UpdateForm extends Action
 {
 
-
-    protected function __construct(Context $context, TicketFactory $ticketF)
+    protected $request;
+    protected function __construct(
+        Context $context,
+        TicketFactory $ticketF,
+        Http $request
+    )
     {
-
+        $this->request = $request;
         $this->ticketFactory = $ticketF;
         parent::__construct($context);
 
@@ -26,9 +31,7 @@ class UpdateForm extends Action
           * @var Json $jsonResult
           */
         $PageResult = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $request = $objectManager->get('\Magento\Framework\App\Request\Http');
-        $numberId = (int)$request->getParam('number_id');
+        $numberId = (int)$this->request->getParam('number_id');
 
         $block = $PageResult->getLayout()->getBlock('cmdb_page_updateform');
         $block->setData('numberid', $numberId);
