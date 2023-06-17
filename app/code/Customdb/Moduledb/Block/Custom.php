@@ -6,7 +6,6 @@ namespace Customdb\Moduledb\Block;
 class Custom extends \Magento\Framework\View\Element\Template
 {
 
-
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Customer\Model\Customer $customer,
@@ -44,9 +43,9 @@ class Custom extends \Magento\Framework\View\Element\Template
     public function isCustomerLoggedin()
     {
         if ($this->session->isLoggedIn()) {
-            $url = "https://enrico.reflexmania.it/index.php/default/customer/account/";
+            $url=$this->getUrl('default/customer/account/');
         } else {
-            $url = "https://enrico.reflexmania.it/index.php/customer/account/login";
+            $url=$this->getUrl('customer/account/login');
         }
 
         return $url;

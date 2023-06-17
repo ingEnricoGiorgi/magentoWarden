@@ -2,19 +2,29 @@
 <?php
 $result = $block->getData('tickets');
 
-
 ?>
-<table >
-<?php foreach($result as $ticket) { ?>
-  <tr>
-    <th ><?php echo $ticket->getData('number_id'); ?> </th>
-    <th><?php  echo $ticket->getNome();  ?></th>
-    <th><?php  echo $ticket->getCognome();   ?></th>
-    <th><?php  echo $ticket->getTicketid();   ?></th>
+<table>
+    <tr>
+        <th>NUMBER ID:</th>
+        <th>NOME:</th>
+        <th>COGNOME:</th>
+        <th>TICKET ID:</th>
+        <th>EMAIL:</th>
+    </tr>
+    <?php foreach ($result as $ticket) { ?>
 
-    <th><a href="<?php echo $block->getUrl('customdb/page/insertform');?>">INSERT</a></th>
-    <th><a href="<?php echo $block->getUrl('customdb/page/updateform/');?>">UPDATE</a></th>
-    <th><a href="<?php echo $block->getUrl('customdb/page/deleteform/');?>">DELETE</a></th>
-  </tr>
- <?php } ?>
+        <tr>
+            <td><?php echo $ticket->getData('number_id'); ?> </td>
+            <td><?php echo $ticket->getNome(); ?></td>
+            <td><?php echo $ticket->getCognome(); ?></td>
+            <td><?php echo $ticket->getTicketid(); ?></td>
+            <td><?php echo $ticket->getEmail(); ?></td>
+
+            <td><a href="<?php echo $block->getUrl('customdb/page/insertform'); ?>">INSERT</a></td>
+            <td>
+                <a href="<?php echo $block->getUrl('customdb/page/updateform', ['number_id' => $ticket->getData('number_id')]) ?>">UPDATE</a></td>
+
+            <td><a href="<?php echo $block->getUrl('customdb/page/deleteform/'); ?>">DELETE</a></td>
+        </tr>
+    <?php } ?>
 </table>

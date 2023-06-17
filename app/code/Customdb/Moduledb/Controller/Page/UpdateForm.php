@@ -27,31 +27,41 @@ class UpdateForm extends Action
           */
         $PageResult = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         echo"CI ARRIVO?";
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $request = $objectManager->get('\Magento\Framework\App\Request\Http');
+        $numberId = $request->getParam('number_id');
+        $block = $PageResult->getLayout()->getBlock('cmdb_page_updateform');
+        $block->setData('tickets', $numberId);
 
         if (isset($_POST["nome"])) {
-            // if($_POST['send']=='update') NON FUNZIONA
+
+            $numberid= htmlspecialchars($_POST["numberid"], ENT_QUOTES);
             $nome     = htmlspecialchars($_POST["nome"], ENT_QUOTES);
             $cognome  = htmlspecialchars($_POST["cognome"], ENT_QUOTES);
             $ticketid = htmlspecialchars($_POST["ticketid"], ENT_QUOTES);
+            $email = htmlspecialchars($_POST["email"], ENT_QUOTES);
+
+
+
             $form     = [
+                'numberid'     => $numberid,
                 'nome'     => $nome,
                 'cognome'  => $cognome,
                 'ticketid' => $ticketid,
+                'email' => $email,
             ];
             echo json_encode($form);
 
             $ticket = $this->ticketFactory->create();
-            $result = $ticket->load($ticketid);
+            $result = $ticket->load($numberid);
             foreach ($form as $key => $value) {
                 $result->setData($key, $value);
-                echo("dati aggiornati");
-                echo "<br>";
             }
-
-            $ticket->save();
+            $result->save();
+            echo("dati aggiornati");
         } else {
-            // $user = null;
-            echo "no username supplied";
+
+            echo "ticket non aggiornato";
         }//end if
 
         return $PageResult;

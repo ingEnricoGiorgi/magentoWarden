@@ -1,7 +1,7 @@
 <h1> FORM TICKET </h1>
 <form action="<?php echo $block->getUrl('customdb/page/deleteform');?>" method="post" enctype="multipart/form-data">
   <?php echo $this->getBlockHtml('deleteformkey')?> <!-- chiave nascosta per cross origin request -->
-  <label for="ticket">ID:</label><br>
+  <label for="ticket">TICKET ID:</label><br>
   <input type="number" id="numberid" name="numberid" ><br>
   <button type="submit" name="send" value="delete"> delete </button>
   <button>
