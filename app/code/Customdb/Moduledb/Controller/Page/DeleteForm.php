@@ -29,18 +29,18 @@ class DeleteForm extends Action
 
         echo (" ci arrivo");
 
-        if (isset($_POST["ticketid"])) {
-            $ticketid = htmlspecialchars($_POST["ticketid"], ENT_QUOTES);
+        if (isset($_POST["numberid"])) {
+            $numberid = htmlspecialchars($_POST["numberid"], ENT_QUOTES);
             $send      = htmlspecialchars($_POST["send"], ENT_QUOTES);
             //serve a niente
             $form      = [
-                'ticketid' => $ticketid,
+                'ticketid' => $numberid,
                 'send'      => $send,
             ];
             echo json_encode($form);
 
             $ticket = $this->ticketFactory->create();
-            $result = $ticket->load($ticketid);
+            $result = $ticket->load($numberid);
             $result->delete();
             echo("dati cancellati");
             $result->save();
