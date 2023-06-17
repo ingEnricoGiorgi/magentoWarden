@@ -14,6 +14,7 @@ bin/magento setup:di:compile
 bin/magento cache:clean
 bin/magento cache:flush
 
+bin/magento admin:user:create
 bin/magento deploy:mode:set developer
 bin/magento cache:status
 bin/magento cache:disable layout
